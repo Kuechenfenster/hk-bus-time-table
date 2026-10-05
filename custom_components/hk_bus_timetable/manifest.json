@@ -1,0 +1,11 @@
+{
+  "codeowners": ["@Kuechenfenster"],
+  "config_flow": true,
+  "documentation": "https://github.com/Kuechenfenster/hk-bus-time-table",
+  "domain": "hk_bus_timetable",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/Kuechenfenster/hk-bus-time-table/issues",
+  "name": "HK Bus Time Table",
+  "version": "1.0.0"
+}
