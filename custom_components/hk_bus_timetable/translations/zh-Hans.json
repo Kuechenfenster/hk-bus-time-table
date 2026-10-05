@@ -1,0 +1,88 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "巴士公司",
+        "description": "选择运营此路线的巴士公司。\n\n- **KMB / LWB**：九巴及龙运巴士路线（例如 1A、270、A31）\n- **Citybus / NWFB**：城巴路线，包括前新巴路线（例如 5B、788）",
+        "data": {
+          "company": "巴士公司"
+        }
+      },
+      "route": {
+        "title": "巴士路线",
+        "description": "输入路线编号，例如 **1A**、**788** 或 **A31**。",
+        "data": {
+          "route": "路线编号"
+        }
+      },
+      "direction": {
+        "title": "行车方向",
+        "description": "选择行车方向（起点 → 终点）。",
+        "data": {
+          "direction": "行车方向"
+        }
+      },
+      "stop": {
+        "title": "巴士站",
+        "description": "从列表选择此路线及方向的巴士站，或直接输入巴士站编号（在下拉菜单中搜索亦可按站名筛选）。",
+        "data": {
+          "stop_id": "巴士站"
+        }
+      },
+      "time_format": {
+        "title": "显示格式",
+        "description": "选择到站时间的显示方式，日后可于集成设置中更改。",
+        "data": {
+          "time_format": "到达时间显示方式"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "无法连接巴士到站数据服务，请稍后再试。",
+      "route_not_found": "找不到此巴士公司的此路线。",
+      "stop_not_found": "找不到此巴士站。",
+      "unknown": "发生未知错误。"
+    },
+    "abort": {
+      "already_configured": "此路线、方向及巴士站的组合已配置。",
+      "cannot_connect": "无法连接巴士到站数据服务，请稍后再试。",
+      "no_directions": "找不到此路线的行车方向。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "HK Bus Time Table 设置",
+        "description": "更改显示格式会重新创建传感器。",
+        "data": {
+          "time_format": "到达时间显示方式",
+          "scan_interval": "更新间隔（秒）"
+        },
+        "data_description": {
+          "scan_interval": "到站时间的更新频率。请善待公共 API — 30 秒对巴士站显示屏已绰绰有余。"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next_bus": {
+        "name": "下一班车"
+      },
+      "second_bus": {
+        "name": "第二班车"
+      },
+      "third_bus": {
+        "name": "第三班车"
+      }
+    }
+  },
+  "selector": {
+    "time_format": {
+      "options": {
+        "timestamp": "时钟时间（例如 17:03）",
+        "minutes": "距现在的分钟数（例如 6 分钟）"
+      }
+    }
+  }
+}

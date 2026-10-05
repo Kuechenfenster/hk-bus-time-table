@@ -1,0 +1,88 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bus company",
+        "description": "Choose the company that operates your route.\n\n- **KMB / LWB**: Kowloon Motor Bus and Long Win Bus routes (e.g. 1A, 270, A31)\n- **Citybus / NWFB**: Citybus routes, including former NWFB routes (e.g. 5B, 788)",
+        "data": {
+          "company": "Bus company"
+        }
+      },
+      "route": {
+        "title": "Bus route",
+        "description": "Enter the route number, for example **1A**, **788** or **A31**.",
+        "data": {
+          "route": "Route number"
+        }
+      },
+      "direction": {
+        "title": "Direction",
+        "description": "Pick the direction of travel (origin → destination).",
+        "data": {
+          "direction": "Direction"
+        }
+      },
+      "stop": {
+        "title": "Bus stop",
+        "description": "Pick a stop served by this route and direction from the list, or type a bus stop ID directly (searching in the dropdown also filters by stop name).",
+        "data": {
+          "stop_id": "Stop"
+        }
+      },
+      "time_format": {
+        "title": "Display format",
+        "description": "Choose how the arrival times should be displayed. This can be changed later in the integration options.",
+        "data": {
+          "time_format": "Show arrivals as"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the bus data service. Please try again.",
+      "route_not_found": "This route was not found for the selected company.",
+      "stop_not_found": "This stop was not found.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This route, direction and stop combination is already configured.",
+      "cannot_connect": "Cannot reach the bus data service. Please try again later.",
+      "no_directions": "No directions found for this route."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "HK Bus Time Table options",
+        "description": "Changing the display format recreates the sensors.",
+        "data": {
+          "time_format": "Show arrivals as",
+          "scan_interval": "Update interval (seconds)"
+        },
+        "data_description": {
+          "scan_interval": "How often arrival times are refreshed. Please be a good API citizen - 30 seconds is plenty for bus display boards."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next_bus": {
+        "name": "Next bus"
+      },
+      "second_bus": {
+        "name": "Second bus"
+      },
+      "third_bus": {
+        "name": "Third bus"
+      }
+    }
+  },
+  "selector": {
+    "time_format": {
+      "options": {
+        "timestamp": "Clock time (e.g. 17:03)",
+        "minutes": "Minutes from now (e.g. 6 min)"
+      }
+    }
+  }
+}

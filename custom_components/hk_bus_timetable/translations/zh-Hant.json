@@ -1,0 +1,88 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "巴士公司",
+        "description": "選擇營運此路線的巴士公司。\n\n- **KMB / LWB**：九巴及龍運巴士路線（例如 1A、270、A31）\n- **Citybus / NWFB**：城巴路線，包括前新巴路線（例如 5B、788）",
+        "data": {
+          "company": "巴士公司"
+        }
+      },
+      "route": {
+        "title": "巴士路線",
+        "description": "輸入路線編號，例如 **1A**、**788** 或 **A31**。",
+        "data": {
+          "route": "路線編號"
+        }
+      },
+      "direction": {
+        "title": "行車方向",
+        "description": "選擇行車方向（起點 → 終點）。",
+        "data": {
+          "direction": "行車方向"
+        }
+      },
+      "stop": {
+        "title": "巴士站",
+        "description": "從列表選擇此路線及方向的巴士站，或直接輸入巴士站編號（在下拉選單中搜尋亦可按站名篩選）。",
+        "data": {
+          "stop_id": "巴士站"
+        }
+      },
+      "time_format": {
+        "title": "顯示格式",
+        "description": "選擇到站時間的顯示方式，日後可於整合設定中更改。",
+        "data": {
+          "time_format": "到達時間顯示方式"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "無法連接巴士到站數據服務，請稍後再試。",
+      "route_not_found": "找不到此巴士公司的此路線。",
+      "stop_not_found": "找不到此巴士站。",
+      "unknown": "發生未知錯誤。"
+    },
+    "abort": {
+      "already_configured": "此路線、方向及巴士站的組合已設定。",
+      "cannot_connect": "無法連接巴士到站數據服務，請稍後再試。",
+      "no_directions": "找不到此路線的行車方向。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "HK Bus Time Table 設定",
+        "description": "更改顯示格式會重新建立感應器。",
+        "data": {
+          "time_format": "到達時間顯示方式",
+          "scan_interval": "更新間隔（秒）"
+        },
+        "data_description": {
+          "scan_interval": "到站時間的更新頻率。請善待公共 API — 30 秒對巴士站顯示屏已綽綽有餘。"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next_bus": {
+        "name": "下一班車"
+      },
+      "second_bus": {
+        "name": "第二班車"
+      },
+      "third_bus": {
+        "name": "第三班車"
+      }
+    }
+  },
+  "selector": {
+    "time_format": {
+      "options": {
+        "timestamp": "時鐘時間（例如 17:03）",
+        "minutes": "距離現在的分鐘數（例如 6 分鐘）"
+      }
+    }
+  }
+}
