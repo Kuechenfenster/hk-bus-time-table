@@ -1,4 +1,4 @@
-name: HACS validation
+name: Marketplace validation
 
 on:
   push:
@@ -7,13 +7,16 @@ on:
     - cron: "0 0 * * *"
 
 jobs:
-  hacs:
+  marketplace:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: HACS action
+      # Since HA 2026.11 this validates against the built-in Marketplace's
+      # catalog requirements (it reads hacs.json); hacs/action remains the
+      # official checker for custom repositories.
+      - name: Marketplace repository rules
         uses: hacs/action@main
         with:
           category: integration

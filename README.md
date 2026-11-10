@@ -1,5 +1,8 @@
 # HK Bus Time Table — Home Assistant integration
 
+[![Hassfest](https://github.com/Kuechenfenster/hk-bus-time-table/actions/workflows/hassfest.yaml/badge.svg)](https://github.com/Kuechenfenster/hk-bus-time-table/actions/workflows/hassfest.yaml)
+[![Marketplace validation](https://github.com/Kuechenfenster/hk-bus-time-table/actions/workflows/hacs.yaml/badge.svg)](https://github.com/Kuechenfenster/hk-bus-time-table/actions/workflows/hacs.yaml)
+
 Real-time Hong Kong bus arrival times in Home Assistant, powered by the
 official [data.gov.hk](https://data.gov.hk/en-datasets/category/transport)
 real-time arrival APIs.
@@ -18,24 +21,43 @@ per entry.
 
 Both are the official real-time arrival data feeds published on data.gov.hk.
 
-## Installation
+## Requirements
 
-### HACS (recommended)
+- Home Assistant **2026.11 or newer** — the [Marketplace](https://www.home-assistant.io/integrations/marketplace/)
+  is built in and lives under **Settings → Marketplace** (it replaces HACS).
+- On Home Assistant 2026.10 or older, use the [manual installation](#manual-installation).
 
-Until this integration is accepted into the default HACS store, add it as a
-custom repository:
+## Installation (Marketplace)
 
-1. In Home Assistant, open **HACS** → **Integrations** → **⋮ (top right)** →
-   **Custom repositories**.
-2. Add `https://github.com/Kuechenfenster/hk-bus-time-table` with
-   category **Integration**.
-3. Find **HK Bus Time Table** in HACS and click **Download**.
-4. Restart Home Assistant.
+This integration is installed through the Marketplace as a custom repository.
+Click the button, or follow the steps below:
 
-### Manual
+[![Open your Home Assistant instance and open this repository inside the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=Kuechenfenster&repository=hk-bus-time-table&category=integration)
 
-1. Copy the `custom_components/hk_bus_timetable` folder into your Home Assistant
-   `config/custom_components/` directory.
+1. Go to **Settings → Marketplace**.
+2. Open the **⋮ menu** (or the custom repositories page) and choose
+   **Add from link**.
+3. Paste `https://github.com/Kuechenfenster/hk-bus-time-table`, select
+   **Integration** and confirm. (Adding a repository that is not in the
+   catalog needs a one-time GitHub device sign-in; installing from the
+   catalog needs no GitHub account.)
+4. Open **HK Bus Time Table** and click **Download**.
+5. No restart is needed — this integration has a config flow, so setting it
+   up starts right away:
+
+[![Open your Home Assistant instance and start setting up HK Bus Time Table.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=hk_bus_timetable)
+
+### Migrating from HACS
+
+If you installed this integration through HACS on 2026.10 or earlier, the
+2026.11 update migrates everything automatically: installed projects, custom
+repositories and update entities carry over, and HACS itself is removed. No
+action needed.
+
+### Manual installation
+
+1. Copy the `custom_components/hk_bus_timetable` folder into your Home
+   Assistant `config/custom_components/` directory.
 2. Restart Home Assistant.
 
 ## Configuration
@@ -125,11 +147,25 @@ mode: single
 ## Development
 
 - Validation runs in CI with [hassfest](.github/workflows/hassfest.yaml) and
-  the [HACS action](.github/workflows/hacs.yaml).
+  the [HACS action](.github/workflows/hacs.yaml) — since 2026.11 the HACS
+  action validates against the Marketplace catalog requirements (the
+  Marketplace reads `hacs.json`).
+- **Releases:** the Marketplace shows and installs versions from GitHub
+  releases, and the release **tag must match `version` in
+  [`manifest.json`](custom_components/hk_bus_timetable/manifest.json)**.
+  To cut a release: push the version bump, then
+  `gh release create 1.0.0 --title 1.0.0 --notes "Release notes here"`.
+- Brand icons in `custom_components/hk_bus_timetable/brand/` are generated
+  with `python3 scripts/make_icons.py` (macOS, needs Pillow).
 - `scripts/demo_api.py` smoke-tests the API layer against the live endpoints
   without Home Assistant: `python3 scripts/demo_api.py`
+- The default catalog lives in the
+  [`hacs/default`](https://github.com/hacs/default) repository — submit a PR
+  there to list this integration in the Marketplace without the GitHub
+  sign-in step.
 
 ## Credits
 
 Bus real-time arrival data © Transport Department / data.gov.hk via the KMB
 and Citybus ETA APIs. This project is not affiliated with the bus operators.
+The bus icon is the Material Design Icons `bus` glyph (Apache-2.0).

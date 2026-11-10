@@ -1,4 +1,5 @@
 {
+  "categories": ["vehicles_transport"],
   "codeowners": ["@Kuechenfenster"],
   "config_flow": true,
   "documentation": "https://github.com/Kuechenfenster/hk-bus-time-table",
